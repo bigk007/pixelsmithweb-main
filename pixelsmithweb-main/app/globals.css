@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%; /* Black */
+    --foreground: 120 100% 95%; /* Light Green (for text) */
+
+    --card: 0 0% 5%; /* Darker black for cards */
+    --card-foreground: 120 100% 95%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 120 100% 95%;
+
+    --primary: 120 60% 30%; /* Dark Green */
+    --primary-foreground: 120 100% 95%; /* Light Green */
+
+    --secondary: 120 40% 20%; /* Darker Green */
+    --secondary-foreground: 120 100% 95%;
+
+    --muted: 120 20% 15%; /* Very Dark Green / Muted */
+    --muted-foreground: 120 70% 80%; /* Lighter Muted Green */
+
+    --accent: 120 70% 50%; /* Neon Green */
+    --accent-foreground: 0 0% 0%; /* Black */
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 120 60% 25%; /* Dark Green Border */
+    --input: 120 60% 20%; /* Dark Green Input BG */
+    --ring: 120 70% 50%; /* Neon Green Ring */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Keeping dark consistent with root for this theme */
+    --background: 0 0% 0%;
+    --foreground: 120 100% 95%;
+    --card: 0 0% 5%;
+    --card-foreground: 120 100% 95%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 120 100% 95%;
+    --primary: 120 60% 30%;
+    --primary-foreground: 120 100% 95%;
+    --secondary: 120 40% 20%;
+    --secondary-foreground: 120 100% 95%;
+    --muted: 120 20% 15%;
+    --muted-foreground: 120 70% 80%;
+    --accent: 120 70% 50%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 120 60% 25%;
+    --input: 120 60% 20%;
+    --ring: 120 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "VCR OSD Mono", "Courier New", Courier, monospace;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold;
+  }
+}
+
+/* VCR OSD Mono font (pixelated) */
+@font-face {
+  font-family: "VCR OSD Mono";
+  src: url("https://db.onlinewebfonts.com/t/0ab55a75300e879135a2f0945e998598.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/0ab55a75300e879135a2f0945e998598.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Custom scrollbar for Matrix theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #001a00; /* Dark green track */
+}
+::-webkit-scrollbar-thumb {
+  background: #00cc00; /* Bright green thumb */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff00; /* Brighter green on hover */
+}
+
+/* Hide scrollbar for specific elements if needed */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Glow effect */
+.text-glow {
+  text-shadow: 0 0 5px theme("colors.green.500"), 0 0 10px theme("colors.green.500");
+}
+.button-glow:hover {
+  box-shadow: 0 0 10px theme("colors.green.400"), 0 0 20px theme("colors.green.400");
+}
+
+/* 3D perspective utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+}
+
+.backface-visibility-hidden {
+  backface-visibility: hidden;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .text-glow {
+    text-shadow: 0 0 3px theme("colors.green.500"), 0 0 6px theme("colors.green.500");
+  }
+
+  .button-glow:hover {
+    box-shadow: 0 0 8px theme("colors.green.400"), 0 0 16px theme("colors.green.400");
+  }
+
+  /* Ensure touch targets are at least 44px */
+  button,
+  .button,
+  a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Better form inputs on mobile */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Improve readability on small screens */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
