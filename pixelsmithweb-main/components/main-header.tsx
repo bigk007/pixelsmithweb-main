@@ -9,6 +9,10 @@ export default function MainHeader() {
   const menuItems = [
     { href: "/about", label: "About" },
     { href: "/services", label: "Services" },
+    { href: "/services/seo", label: "SEO Management" },
+    { href: "/services/social-media", label: "Social Media" },
+    { href: "/services/quick-fixes", label: "Quick Fixes" },
+    { href: "/pricing", label: "Pricing" },
     { href: "/faq", label: "FAQs" },
   ]
 
