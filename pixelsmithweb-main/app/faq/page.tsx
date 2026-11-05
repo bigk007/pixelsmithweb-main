@@ -10,12 +10,12 @@ const faqs = [
   {
     question: "How much does it cost?",
     answer:
-      "Websites start at $100 for a basic site and scale based on complexity. SEO Management starts at $149/mo, Social Media Management at $199/mo, and Quick Fixes start at $25. See our Pricing page for every plan!",
+      "Here's a rough idea: Quick Fixes to your current site run around $500, a full site refresh is around $1,500, and Social Media Management starts around $500/mo. It really depends on what you want done, so we'll put together something that fits after a quick call. See our Pricing page for details!",
   },
   {
     question: "Can you fix just one thing on my existing website?",
     answer:
-      "Yes! Our Quick Fixes are flat-rate, one-time jobs like content updates, broken links, mobile layout fixes and speed optimization. Most are done within 24–48 hours.",
+      "Yes! Our Quick Fixes package starts with a free review of your current site. We find what's broken, like products wrongly showing sold out, broken links, slow pages or mobile issues, and fix it. Packages run around $500.",
   },
   {
     question: "Do you offer support after launch?",

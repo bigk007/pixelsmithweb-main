@@ -4,6 +4,7 @@
 export type PricingTier = {
   name: string
   price: string
+  priceNote?: string
   period?: string
   tagline: string
   features: string[]
@@ -12,7 +13,6 @@ export type PricingTier = {
 
 export type QuickFix = {
   name: string
-  price: string
   description: string
 }
 
@@ -32,8 +32,8 @@ export const services: Service[] = [
     title: "Website Creation & Redesign",
     tagline: "Get online",
     description:
-      "Custom websites built in days, not weeks. From landing pages to full business sites, or a modern refresh of the site you already have.",
-    highlights: ["Built in 24–48 hours", "Mobile-first design", "30 days of free support"],
+      "Custom websites built fast. From brand-new business sites to a full refresh of the site you already have.",
+    highlights: ["Full site refresh from $1,500", "Mobile-first design", "30 days of free support"],
   },
   {
     slug: "seo",
@@ -51,7 +51,7 @@ export const services: Service[] = [
     tagline: "Get clicks",
     description:
       "We plan, create and post content for your brand so you stay active, build a following and drive traffic back to your site.",
-    highlights: ["Content calendar & posting", "Custom graphics & reels", "Comment & DM management"],
+    highlights: ["From $500/mo", "3 posts a week", "1 content shoot a month"],
   },
   {
     slug: "quick-fixes",
@@ -59,24 +59,30 @@ export const services: Service[] = [
     title: "Quick Fixes",
     tagline: "Get it fixed",
     description:
-      "Need one thing done fast? Flat-rate fixes for broken links, slow pages, content updates and more — usually done within 48 hours.",
-    highlights: ["Flat-rate pricing", "Most fixes done in 24–48 hours", "No contract required"],
+      "Don't need a new site? We find and fix what's costing you customers on the site you already have, from broken checkouts to slow pages.",
+    highlights: ["Fix-up packages from around $500", "Free review of your current site", "No contract required"],
   },
 ]
 
 export const websitePricing: PricingTier[] = [
   {
-    name: "Starter Site",
-    price: "$100",
-    tagline: "A clean one-page site to get your business online.",
-    features: ["1-page landing site", "Mobile-friendly design", "Contact form", "30 days of free support"],
+    name: "Full Site Refresh",
+    price: "$1,500",
+    priceNote: "starting at",
+    tagline: "A modern redesign of the site you already have.",
+    features: [
+      "New modern, mobile-first design",
+      "Updated layout, content and images",
+      "Speed and basic SEO cleanup",
+      "30 days of free support",
+    ],
+    popular: true,
   },
   {
-    name: "Business Site",
+    name: "New Website",
     price: "Custom",
-    tagline: "Multi-page sites and redesigns, quoted to your needs.",
-    features: ["Multiple pages", "Booking, menus or galleries", "Basic SEO setup", "30 days of free support"],
-    popular: true,
+    tagline: "A brand-new site built from scratch, quoted to your needs.",
+    features: ["Multiple pages", "Booking, store, menus or galleries", "Basic SEO setup", "30 days of free support"],
   },
 ]
 
@@ -127,46 +133,36 @@ export const seoPricing: PricingTier[] = [
 
 export const socialPricing: PricingTier[] = [
   {
-    name: "Starter",
-    price: "$199",
+    name: "Social Media Management",
+    price: "$500",
+    priceNote: "starting at",
     period: "/mo",
-    tagline: "Stay consistent on the platforms that matter most.",
+    tagline: "Consistent, on-brand content without you lifting a finger.",
     features: [
-      "2 platforms",
-      "8 posts per month",
-      "Custom branded graphics",
-      "Monthly content calendar",
-      "Monthly performance report",
-    ],
-  },
-  {
-    name: "Growth",
-    price: "$349",
-    period: "/mo",
-    tagline: "Grow your following and turn followers into customers.",
-    features: [
-      "3 platforms",
-      "12 posts + 4 reels/stories per month",
-      "Hashtag & audience strategy",
-      "Comment management",
+      "3 posts per week (about 12 per month)",
+      "1 photo/video content shoot per month",
+      "Up to 2 platforms",
+      "Captions, hashtags & scheduling",
+      "Monthly content calendar for your approval",
       "Monthly performance report",
     ],
     popular: true,
   },
   {
-    name: "Pro",
-    price: "$599",
-    period: "/mo",
-    tagline: "Hands-off social media, fully managed for you.",
+    name: "Custom Plan",
+    price: "Custom",
+    tagline: "Need more? We'll build a plan that fits.",
     features: [
-      "4 platforms",
-      "20 posts + 8 reels/stories per month",
+      "Extra posts, reels or shoots",
+      "More platforms",
       "Comment & DM management",
       "Paid ad campaign management (ad spend separate)",
-      "Bi-weekly reports + strategy call",
     ],
   },
 ]
+
+export const socialScopeNote =
+  "Each plan has a set scope, so you always know what you're getting. Extra posts, shoots or platforms are quoted separately."
 
 export const bundleOffer = {
   name: "Get Found + Get Clicks Bundle",
@@ -174,15 +170,26 @@ export const bundleOffer = {
   discount: "15% off",
 }
 
+export const quickFixPackage: PricingTier = {
+  name: "Quick Fix Package",
+  price: "$500",
+  priceNote: "around",
+  tagline: "We review your current site, then fix the issues costing you customers.",
+  features: [
+    "Free review of your current site",
+    "A clear list of what we'll fix before we start",
+    "Most fixes done within a week",
+    "30 days of free support after",
+  ],
+}
+
 export const quickFixes: QuickFix[] = [
-  { name: "Text or Image Update", price: "$25", description: "Swap copy, photos, hours, prices or your logo." },
-  { name: "Broken Link Fix", price: "$35", description: "Find and fix broken links and buttons across your site." },
-  { name: "Mobile Layout Fix", price: "$49", description: "Fix pages that look broken or cramped on phones." },
-  { name: "Domain & SSL Setup", price: "$49", description: "Connect your domain and get the secure padlock (https)." },
-  { name: "Contact Form Fix or Install", price: "$59", description: "Repair a broken form or add a new one that emails you." },
-  { name: "Booking / Widget Install", price: "$59", description: "Add Calendly, booking, reviews, chat or map widgets." },
-  { name: "Analytics Setup", price: "$59", description: "Google Analytics 4 + Search Console, set up and verified." },
-  { name: "Google Business Profile Setup", price: "$75", description: "Create or claim and fully optimize your profile." },
-  { name: "SEO Tune-Up", price: "$79", description: "Meta titles, descriptions, sitemap and indexing check." },
-  { name: "Speed Optimization", price: "$99", description: "Compress images and clean up code for faster load times." },
+  { name: "Store & Inventory Issues", description: "Products wrongly showing sold out, broken carts or checkout." },
+  { name: "Broken Links & Buttons", description: "Find and fix links, buttons and pages that go nowhere." },
+  { name: "Mobile Layout Fixes", description: "Fix pages that look broken or cramped on phones." },
+  { name: "Contact & Booking Forms", description: "Repair broken forms or add booking, reviews or chat widgets." },
+  { name: "Speed Optimization", description: "Compress images and clean up code for faster load times." },
+  { name: "Content & Image Updates", description: "Refresh outdated copy, photos, hours, prices or your logo." },
+  { name: "Domain & SSL Setup", description: "Connect your domain and get the secure padlock (https)." },
+  { name: "SEO & Analytics Basics", description: "Meta titles, sitemap, Google Analytics and Search Console." },
 ]

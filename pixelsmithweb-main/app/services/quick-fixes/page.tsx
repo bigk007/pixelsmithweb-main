@@ -1,19 +1,19 @@
 import type { Metadata } from "next"
 import MainHeader from "@/components/main-header"
 import MainFooter from "@/components/main-footer"
-import { ContactCta, QuickFixGrid, SectionHeading } from "@/components/pricing-cards"
-import { quickFixes } from "@/lib/services-data"
+import { BallparkNote, ContactCta, PricingTierGrid, QuickFixGrid, SectionHeading } from "@/components/pricing-cards"
+import { quickFixPackage, quickFixes } from "@/lib/services-data"
 
 export const metadata: Metadata = {
   title: "Quick Fixes | Pixel Smith",
   description:
-    "Flat-rate website fixes for small businesses: content updates, broken links, mobile fixes, speed, SEO tune-ups and more.",
+    "Fix-up packages for your current website: store and inventory issues, broken links, mobile layout, speed, forms and more.",
 }
 
 const steps = [
-  { title: "1. Tell us what's wrong", description: "Send us your site link and a quick description of the fix." },
-  { title: "2. Get a flat price", description: "We confirm the price up front — no hourly billing, no surprises." },
-  { title: "3. It's fixed", description: "Most fixes are done within 24–48 hours. Pay when you're happy." },
+  { title: "1. Free site review", description: "Send us your site link. We'll look it over and find what's broken." },
+  { title: "2. Get a quote", description: "We hop on a quick call and agree on exactly what gets fixed and the price." },
+  { title: "3. It's fixed", description: "We fix everything on the list and give you 30 days of free support after." },
 ]
 
 export default function QuickFixesPage() {
@@ -28,8 +28,8 @@ export default function QuickFixesPage() {
               Quick Fixes
             </h1>
             <p className="text-base md:text-xl text-green-200 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              Don't need a whole new website? We fix the little things that cost you customers — fast, at a flat rate,
-              on any website.
+              Don't need a whole new website? We find and fix the things on your current site that are costing you
+              customers.
             </p>
           </div>
 
@@ -44,12 +44,18 @@ export default function QuickFixesPage() {
             </div>
           </section>
 
-          <section className="mb-12 md:mb-16">
-            <SectionHeading title="Quick Fix Pricing" subtitle="Flat rates per fix. Don't see yours? Ask for a quote." />
+          <section className="mb-16 md:mb-20">
+            <SectionHeading title="Common Fixes" subtitle="Here's what we fix most often. Don't see yours? Just ask." />
             <QuickFixGrid fixes={quickFixes} />
           </section>
 
-          <ContactCta title="Something broken?" label="Request a Quick Fix" />
+          <section className="mb-12 md:mb-16">
+            <SectionHeading title="Quick Fix Pricing" />
+            <PricingTierGrid tiers={[quickFixPackage]} ctaLabel="Get a Free Site Review" />
+            <BallparkNote />
+          </section>
+
+          <ContactCta title="Something broken?" label="Book a Quick Call" />
         </div>
       </main>
       <MainFooter />

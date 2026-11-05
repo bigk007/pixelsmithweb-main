@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button"
 import type { PricingTier, QuickFix } from "@/lib/services-data"
 
 export function PricingTierGrid({ tiers, ctaLabel = "Get Started" }: { tiers: PricingTier[]; ctaLabel?: string }) {
-  const cols = tiers.length === 2 ? "md:grid-cols-2 max-w-3xl" : "md:grid-cols-3"
+  const cols =
+    tiers.length === 1 ? "max-w-md" : tiers.length === 2 ? "md:grid-cols-2 max-w-3xl" : "md:grid-cols-3"
   return (
     <div className={`grid grid-cols-1 ${cols} gap-6 md:gap-8 mx-auto w-full`}>
       {tiers.map((tier) => (
@@ -22,6 +23,9 @@ export function PricingTierGrid({ tiers, ctaLabel = "Get Started" }: { tiers: Pr
           <h3 className="text-xl md:text-2xl font-semibold text-green-300 mb-1">{tier.name}</h3>
           <p className="text-green-200 text-sm mb-4 min-h-[2.5rem]">{tier.tagline}</p>
           <p className="mb-6">
+            {tier.priceNote && (
+              <span className="block text-xs uppercase tracking-widest text-green-300 mb-1">{tier.priceNote}</span>
+            )}
             <span className="text-4xl font-bold text-green-400 text-glow">{tier.price}</span>
             {tier.period && <span className="text-green-300 ml-1">{tier.period}</span>}
           </p>
@@ -47,20 +51,29 @@ export function PricingTierGrid({ tiers, ctaLabel = "Get Started" }: { tiers: Pr
 
 export function QuickFixGrid({ fixes }: { fixes: QuickFix[] }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
       {fixes.map((fix) => (
-        <div
+        <li
           key={fix.name}
-          className="flex items-start justify-between gap-4 text-left bg-black/70 border border-green-700 rounded-lg p-4 hover:border-accent transition-colors"
+          className="flex items-start gap-3 text-left bg-black/70 border border-green-700 rounded-lg p-4 hover:border-accent transition-colors"
         >
+          <Check className="h-5 w-5 mt-0.5 shrink-0 text-accent" aria-hidden="true" />
           <div>
             <h3 className="text-base md:text-lg font-semibold text-green-300">{fix.name}</h3>
             <p className="text-green-100 text-sm">{fix.description}</p>
           </div>
-          <span className="text-xl font-bold text-green-400 text-glow whitespace-nowrap">{fix.price}</span>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
+  )
+}
+
+export function BallparkNote() {
+  return (
+    <p className="text-center text-green-200 text-sm md:text-base max-w-2xl mx-auto mt-8">
+      All prices are ballpark. The final price depends on what you want done, so we'll put together something that
+      fits after a quick call.
+    </p>
   )
 }
 

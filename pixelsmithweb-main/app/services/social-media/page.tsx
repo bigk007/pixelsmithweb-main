@@ -2,27 +2,27 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import MainHeader from "@/components/main-header"
 import MainFooter from "@/components/main-footer"
-import { ContactCta, PricingTierGrid, SectionHeading } from "@/components/pricing-cards"
-import { bundleOffer, socialPricing } from "@/lib/services-data"
+import { BallparkNote, ContactCta, PricingTierGrid, SectionHeading } from "@/components/pricing-cards"
+import { bundleOffer, socialPricing, socialScopeNote } from "@/lib/services-data"
 
 export const metadata: Metadata = {
   title: "Social Media Management | Pixel Smith",
   description:
-    "Monthly social media management for small businesses: content creation, posting, reels, community management and reporting.",
+    "Social media management for small businesses from $500/mo: 3 posts a week, a monthly content shoot, captions and reporting.",
 }
 
 const included = [
   {
-    title: "Content Creation",
-    description: "Branded graphics, captions and short-form video made for your business and your audience.",
+    title: "Monthly Content Shoot",
+    description: "Once a month we shoot photos and video of your business, so your feed is real, not stock.",
   },
   {
-    title: "Scheduling & Posting",
-    description: "A monthly content calendar you approve, then we post consistently so you never go quiet.",
+    title: "3 Posts a Week",
+    description: "A monthly content calendar you approve, then we post 3 times a week so you never go quiet.",
   },
   {
-    title: "Community Management",
-    description: "We reply to comments and messages so leads never slip through the cracks.",
+    title: "Captions & Hashtags",
+    description: "Every post gets on-brand captions and hashtags written to reach local customers.",
   },
   {
     title: "Reporting",
@@ -65,9 +65,10 @@ export default function SocialMediaPage() {
           <section className="mb-12 md:mb-16">
             <SectionHeading
               title="Social Media Pricing"
-              subtitle="Month-to-month plans. No long-term contracts — cancel anytime."
+              subtitle={`Month-to-month, no long-term contracts. ${socialScopeNote}`}
             />
-            <PricingTierGrid tiers={socialPricing} ctaLabel="Start Getting Clicks" />
+            <PricingTierGrid tiers={socialPricing} ctaLabel="Book a Quick Call" />
+            <BallparkNote />
             <p className="text-center text-green-200 mt-8">
               <span className="text-accent font-semibold">{bundleOffer.discount}:</span> pair social with{" "}
               <Link href="/services/seo" className="text-green-300 underline hover:text-accent">
@@ -77,7 +78,7 @@ export default function SocialMediaPage() {
             </p>
           </section>
 
-          <ContactCta title="Ready to grow your following?" label="Contact Us Today" />
+          <ContactCta title="Ready to grow your following?" label="Book a Quick Call" />
         </div>
       </main>
       <MainFooter />

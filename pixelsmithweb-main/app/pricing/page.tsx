@@ -2,8 +2,15 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import MainHeader from "@/components/main-header"
 import MainFooter from "@/components/main-footer"
-import { ContactCta, PricingTierGrid, QuickFixGrid, SectionHeading } from "@/components/pricing-cards"
-import { bundleOffer, quickFixes, seoPricing, socialPricing, websitePricing } from "@/lib/services-data"
+import { BallparkNote, ContactCta, PricingTierGrid, SectionHeading } from "@/components/pricing-cards"
+import {
+  bundleOffer,
+  quickFixPackage,
+  seoPricing,
+  socialPricing,
+  socialScopeNote,
+  websitePricing,
+} from "@/lib/services-data"
 
 export const metadata: Metadata = {
   title: "Pricing | Pixel Smith",
@@ -29,7 +36,7 @@ export default function PricingPage() {
               Pricing
             </h1>
             <p className="text-base md:text-xl text-green-200 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              Simple, transparent pricing. Monthly plans are month-to-month — no long-term contracts.
+              Here's a rough idea of what things cost. Every project is different, so we'll put together something that fits once we know more. Monthly plans are month-to-month, with no long-term contracts.
             </p>
           </div>
 
@@ -49,7 +56,7 @@ export default function PricingPage() {
             <SectionHeading
               eyebrow="Get Online"
               title="Websites"
-              subtitle="Custom sites built in days. Every site includes 30 days of free support."
+              subtitle="Refresh the site you have or start from scratch. Every site includes 30 days of free support."
             />
             <PricingTierGrid tiers={websitePricing} ctaLabel="Get a Free Quote" />
           </section>
@@ -72,9 +79,9 @@ export default function PricingPage() {
             <SectionHeading
               eyebrow="Get Clicks"
               title="Social Media Management"
-              subtitle="Consistent, on-brand content that turns followers into customers."
+              subtitle={socialScopeNote}
             />
-            <PricingTierGrid tiers={socialPricing} ctaLabel="Start Getting Clicks" />
+            <PricingTierGrid tiers={socialPricing} ctaLabel="Book a Quick Call" />
             <p className="text-center mt-6">
               <Link href="/services/social-media" className="text-green-300 underline hover:text-accent">
                 Learn more about Social Media Management
@@ -92,12 +99,20 @@ export default function PricingPage() {
             <SectionHeading
               eyebrow="Get It Fixed"
               title="Quick Fixes"
-              subtitle="Flat-rate, one-time fixes on any website. Most done within 24–48 hours."
+              subtitle="Fix what's broken on the site you already have. We review your site first for free."
             />
-            <QuickFixGrid fixes={quickFixes} />
+            <PricingTierGrid tiers={[quickFixPackage]} ctaLabel="Get a Free Site Review" />
+            <p className="text-center mt-6">
+              <Link href="/services/quick-fixes" className="text-green-300 underline hover:text-accent">
+                See what we fix
+              </Link>
+            </p>
           </section>
 
-          <ContactCta title="Not sure what you need?" label="Get a Free Quote" />
+          <BallparkNote />
+          <div className="mt-12">
+            <ContactCta title="Not sure what you need?" label="Book a Quick Call" />
+          </div>
         </div>
       </main>
       <MainFooter />
